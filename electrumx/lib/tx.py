@@ -980,7 +980,7 @@ class DeserializerDecred(Deserializer):
         ), tx_hash, self.cursor - start
 
 
-class DeserializerQtum(DeserializerSegWit):
+class DeserializerHtmlcoin(DeserializerSegWit):
 
     def read_varint(self):
         '''
