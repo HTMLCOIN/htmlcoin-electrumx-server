@@ -84,7 +84,7 @@ Install the prerequisites above.
 
 Check out the code from Github::
 
-    git clone https://github.com/spesmilo/electrumx.git
+    git clone https://github.com/denuoweb/htmlcoin-electrumx-server.git
     cd electrumx
 
 You can install with::
