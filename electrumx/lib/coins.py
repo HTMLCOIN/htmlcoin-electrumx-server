@@ -305,7 +305,7 @@ class Htmlcoin(Coin):
     POW_BLOCK_COUNT = 5000
     RPC_PORT = 4889
     CHUNK_SIZE = 1024
-    DEFAULT_MAX_SEND = 9000000
+    DEFAULT_MAX_SEND = 10000000000
 
     @classmethod
     def block_header(cls, block, height):
