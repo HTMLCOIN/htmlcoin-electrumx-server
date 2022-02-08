@@ -283,27 +283,27 @@ class Coin:
         return m.digest()[:HASHY_LEN]
 
 
-class Qtum(Coin):
-    NAME = "Qtum"
-    SHORTNAME = "Qtum"
+class Htmlcoin(Coin):
+    NAME = "Htmlcoin"
+    SHORTNAME = "HTML"
     NET = "mainnet"
-    XPUB_VERBYTES = bytes.fromhex("0488b21e")
-    XPRV_VERBYTES = bytes.fromhex("0488ade4")
-    P2PKH_VERBYTE = bytes.fromhex("3a")
-    P2SH_VERBYTES = [bytes.fromhex("32")]
-    WIF_BYTE = bytes.fromhex("80")
-    GENESIS_HASH = '000075aef83cf2853580f8ae8ce6f8c3096cfa21d98334d6e3f95e5582ed986c'
-    TX_COUNT = 217380620
-    TX_COUNT_HEIGHT = 464000
+    XPUB_VERBYTES = bytes.fromhex("1397c10d")
+    XPRV_VERBYTES = bytes.fromhex("1397bcf3")
+    P2PKH_VERBYTE = bytes.fromhex("29")
+    P2SH_VERBYTES = [bytes.fromhex("64")]
+    WIF_BYTE = bytes.fromhex("a9")
+    GENESIS_HASH = '0000bf23c6424c270a24a17a3db723361c349e0f966d7b55a6bca4bfb2d951b0'
+    TX_COUNT = 2305956
+    TX_COUNT_HEIGHT = 1284400
     TX_PER_BLOCK = 1800
     PEER_DEFAULT_PORTS = {'t': '50001', 's': '50002'}
     PEERS = []
-    DAEMON = daemon.QtumDaemon
-    DESERIALIZER = lib_tx.DeserializerQtum
+    DAEMON = daemon.HtmlcoinDaemon
+    DESERIALIZER = lib_tx.DeserializerHtmlcoin
     STATIC_BLOCK_HEADERS = False
     BASIC_HEADER_SIZE = 180
     POW_BLOCK_COUNT = 5000
-    RPC_PORT = 3889
+    RPC_PORT = 4889
     CHUNK_SIZE = 1024
     DEFAULT_MAX_SEND = 9000000
 
@@ -345,7 +345,7 @@ class Qtum(Coin):
         if script and script[0] == OpCodes.OP_RETURN:
             return None
 
-        # Qtum: make p2pk and p2pkh the same hashX
+        # Htmlcoin: make p2pk and p2pkh the same hashX
         if (len(script) == 35 and script[0] == 0x21 and script[1] in [2, 3]) \
                 or (len(script) == 67 and script[0] == 0x41 and script[1] in [4, 6, 7]) \
                 and script[-1] == OpCodes.OP_CHECKSIG:
@@ -355,15 +355,15 @@ class Qtum(Coin):
         return sha256(script).digest()[:HASHX_LEN]
 
 
-class QtumTestnet(Qtum):
+class HtmlcoinTestnet(Htmlcoin):
     NET = "testnet"
-    XPUB_VERBYTES = bytes.fromhex("043587CF")
+    XPUB_VERBYTES = bytes.fromhex("043587cf")
     XPRV_VERBYTES = bytes.fromhex("04358394")
-    GENESIS_HASH = '0000e803ee215c0684ca0d2f9220594d3f828617972aad66feb2ba51f5e14222'
+    GENESIS_HASH = '000013694772f8aeb88efeb2829fe5d71fbca3e23d5043baa770726f204f528c'
     REORG_LIMIT = 8000
-    TX_COUNT = 12242438
-    TX_COUNT_HEIGHT = 1035428
+    TX_COUNT = 3842009
+    TX_COUNT_HEIGHT = 2070000
     TX_PER_BLOCK = 21
     PEERS = []
     PEER_DEFAULT_PORTS = {'t': '51001', 's': '51002'}
-    RPC_PORT = 13889
+    RPC_PORT = 14889
